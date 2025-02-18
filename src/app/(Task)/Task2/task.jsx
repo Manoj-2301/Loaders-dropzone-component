@@ -7,6 +7,7 @@ import Form from '../../Component/Form/Form';
 import OnlyImage from "../../Component2/onlyImage"
 import Button from '../../Component/button/index'
 import { useCallback, useEffect, useState } from 'react';
+
 const task = () => {
   const formValidation = Yup.object({
     email: Yup.string()
