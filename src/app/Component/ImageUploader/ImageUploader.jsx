@@ -68,13 +68,17 @@ const Preview = ({
                             {files.map((file) => (
                                 <li key={file.id} className={`${Style.accept_file}`}>
                                     <div className={`${Style.upload}`}>
-                                        <Image className={`${Style.image}`}
+                                        {file.isImage ? (
+                                            <Image className={`${Style.image}`}
                                             src={file.preview}
-                                            alt={file.name}
+                                            alt={file.name }
                                             onLoad={() => { URL.revokeObjectURL(file.preview) }}
                                             width={width}
                                             height={height}
                                         />
+                                        ):(
+                                            <i className="fi fi-rr-file-pdf" style={{fontSize:"24px"}}></i> 
+                                        )}
                                         <div className={`${Style.uploading_file}`}>
                                             {file.name}
                                             {loading[file.id] ? (<span className={`${Style.loader}`}></span>) : (<p style={{ color: "green" }}>File Size Is {bytesToMB(file.size)} MB</p>)}

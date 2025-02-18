@@ -84,7 +84,7 @@ const SideBySide = ({
                                 reject.length > 0 && (
                                     <li className={`${Style.error_list}`} style={{ listStyle: "none" }}>
                                         <ul className={`${Style.error_message}`}>
-                                            <li className={`${Style.rejected_error}`}>
+                                            <li className={`${Style.rejected_error}`} >
                                                {error_message}
                                             </li>
                                         </ul>

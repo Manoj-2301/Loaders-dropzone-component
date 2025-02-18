@@ -7,18 +7,20 @@ import Form from '../../Component/Form/Form';
 import ImageUploader from '../../Component/ImageUploader/ImageUploader';
 import Button from '../../Component/button/index'
 import { useCallback, useEffect, useState } from 'react';
-const application = () => {
+
+const Application = () => {
     const formValidation = Yup.object({
         email: Yup.string()
             .email('Please enter a valid email address.')
             .required('Email is required.'),
-        file: Yup.string().required("file is required"),
-    })
-    const { control, handleSubmit, reset } = useForm({ resolver: yupResolver(formValidation), });
+        file: Yup.string().required("File is required"),
+    });
+
+    const { control, handleSubmit, reset } = useForm({ resolver: yupResolver(formValidation) });
 
     const [files, setFiles] = useState([]);
-    const [reject, setReject] = useState([])
-    const [loading, setLoading] = useState({})
+    const [reject, setReject] = useState([]);
+    const [loading, setLoading] = useState({});
 
     let idCounter = 0;
 
@@ -26,11 +28,13 @@ const application = () => {
         const dropFile = acceptedFiles.map(file => {
             return Object.assign(file, {
                 preview: URL.createObjectURL(file),
-                id: idCounter++
+                isImage: file.type.startsWith('image/'),
+                id: idCounter++,
+                
             });
         });
         setFiles(Files => [...Files, ...dropFile]);
-        setReject(rejectedFiles)
+        setReject(rejectedFiles);
 
         dropFile.forEach((file) => {
             setLoading((load) => ({
@@ -46,12 +50,9 @@ const application = () => {
                     [file.id]: false,
                 }));
             }, 1000);
-            console.log(file)
-            return;
         });
-        // console.log(acceptedFiles)
-    }, [])
-
+    }, []);
+    console.log(files)
     useEffect(() => {
         return () => files.forEach(file => URL.revokeObjectURL(file.preview));
     }, [files]);
@@ -59,29 +60,28 @@ const application = () => {
     const handleRemoveFile = (remove) => {
         setFiles(files.filter((file) => file.id !== remove.id));
         URL.revokeObjectURL(remove.preview);
-        console.log(remove, 'deleted')
     };
 
     const onSubmit = (data) => {
         const formDataWithFiles = {
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          files: files, 
-        };    
-        console.log("Form data with img card:", formDataWithFiles);  
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            files: files,
+        };
+        console.log("Form data with img card:", formDataWithFiles);
         reset();
-        setFiles([])
-      };
+        setFiles([]);
+    };
+
     return (
         <div className='application'>
-            input with pdf upload
-            <form onSubmit={handleSubmit(onSubmit)} className='form' >
+            <form onSubmit={handleSubmit(onSubmit)} className='form'>
                 <Form
                     name="name"
                     control={control}
                     type="name"
-                  autoComplete={'on'}
+                    autoComplete={'on'}
                     Style={{
                         form_field: "form_field",
                         label: "label",
@@ -137,18 +137,16 @@ const application = () => {
                         dropHeading={"Upload your Resume/CV"}
                         dropText={" size upto 5MB"}
                         onDropFiles={onDrop}
-                        // maxSize={5 * 1024 *1024}
                         width={50}
                         height={50}
                         iconType={<i className="fi fi-rr-cloud-upload-alt"></i>}
                         rejectedIcon={<i className="fi fi-rr-face-sad-sweat"></i>}
                         onClick={handleRemoveFile}
                         loading={loading}
-                        reject={reject}                        
+                        reject={reject}
                         files={files}
                         label={"Cv or Resume"}
-                        acceptedFileTypes={{ 'image/pdf': ['.pdf'] }}
-                        // download={handleClick}
+                        // acceptedFileTypes={{ 'image/pdf': ['.pdf'],}} 
                         Style={{
                             Container: 'container',
                             uploaderbox: "uploaderbox",
@@ -156,19 +154,18 @@ const application = () => {
                             label: "label",
                             drop_title: "drop_title",
                             iconType: "iconType",
-                            drop_sub_em:"drop_sub_em",
-                            // after drop 
+                            drop_sub_em: "drop_sub_em",
                             accepted_list: "accepted_list",
                             accept_file: "accept_file",
                             upload: "upload",
+                            uploading_file:"uploading_file",
                             image: "image",
                             iconBorder: "iconBorder",
                             remove: "remove",
                             error_message: "error_message",
-                            rejected_error:"rejected_error",
+                            rejected_error: "rejected_error",
                         }}
                     />
-
                 </div>
                 <Button
                     text={"Submit"}
@@ -178,7 +175,7 @@ const application = () => {
                     }} />
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default application
+export default Application;

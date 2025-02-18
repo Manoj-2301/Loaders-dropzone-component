@@ -38,7 +38,7 @@
     .main_box{
         display: flex;       
         flex-wrap: wrap;
-        // gap: 10px;
+        gap: 10px;
         .uploaderbox{
             width: 200px;
             height:200px;
@@ -67,11 +67,17 @@
                     75% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
                     100% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0); }
                   }
-              }
-              
-              
-              
+              }          
+                           
         }
+        .error_list{
+            list-style: none;
+            .rejected_error{
+                list-style:  none;
+                margin-top: 10px;
+                text-align: center;
+            }
+          }
         .acccepted_list{
             display: flex;
             gap: 10px;

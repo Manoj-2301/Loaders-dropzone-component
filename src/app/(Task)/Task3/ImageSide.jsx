@@ -11,7 +11,7 @@ import SideBySide from '@/app/component3/SideImage';
 const task = () => {
     const formValidation = Yup.object({
         file: Yup.string().required("file is required"),
-        gallery:Yup.string().required("Need to enter Name ")
+        gallery: Yup.string().required("Need to enter Name ")
     })
     const { control, handleSubmit, reset } = useForm({ resolver: yupResolver(formValidation), });
 
@@ -27,13 +27,13 @@ const task = () => {
             preview: URL.createObjectURL(file),
             id: uniqueIdCounter++
         }));
-        console.log('first', updatedFiles)
+        // console.log('first', updatedFiles)
         setTimeout(() => {
             setFiles(prevFiles => [...prevFiles, ...updatedFiles]);
             setLoading(false)
             setReject(rejectedFiles)
         }, 2000);
-        console.log(acceptedFiles)
+        // console.log(acceptedFiles)
     }, [])
 
     useEffect(() => {
@@ -41,15 +41,30 @@ const task = () => {
     }, [files]);
 
 
+    // useEffect(() => {
+    //     const FetchData = async () => {
+    //         const res = await fetch("https://67ac70495853dfff53dab3cb.mockapi.io/upload/Image", {
+    //             method:"POST",
+    //             headers: {
+    //                 "Content-type": "application/json",
+    //             },
+    //         });
+    //         const fileData = await res.json();
+    //         setFiles(fileData)
+    //     }
+    //     FetchData()
+    // }, [])
+
     const onSubmit = (data) => {
         const formDataWithFiles = {
-            galary: data.galary,
+            gallery: data.gallery,
             files: files,
         };
         console.log("Form data with files:", formDataWithFiles);
         reset();
         setFiles([])
     };
+
 
     const Delete = (fileToRemove) => {
         setFiles(files.filter((file) => file.id !== fileToRemove.id));
@@ -81,8 +96,7 @@ const task = () => {
                     <SideBySide
                         name="file"
                         type={'file'}
-                        control={control}
-                        // maxSize={1 * 1024 * 1024}
+                        control={control}                       
                         maxFiles={3}
                         wrong={Delete}
                         onDropFiles={onDrop}
@@ -91,7 +105,7 @@ const task = () => {
                         icon={<i className="fi fi-br-plus"></i>}
                         loading={loading}
                         reject={reject}
-                        error_message={"Upload up to 3 img"}
+                        error_message={"can Upload up to 3 img at once"}
                         files={files}
                         wrongIcon={<i className="fi fi-br-cross-small"></i>}
                         Style={{
@@ -104,17 +118,18 @@ const task = () => {
                             accepted_list: "acccepted_list",
                             image_accepted: "image_accepted",
                             side_by_side: "side",
-                            wrong: "wrong"
+                            wrong: "wrong",
+                            rejected_error: "rejected_error"
                         }}
                     />
 
                 </div>
                 <Button
-          text={"Submit"}
-          type={"submit"}
-          style={{
-            tb_button: "button"
-          }} />
+                    text={"Submit"}
+                    type={"submit"}
+                    style={{
+                        tb_button: "button"
+                    }} />
             </form>
         </div>
     )
