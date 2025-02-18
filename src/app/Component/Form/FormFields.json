@@ -1,0 +1,25 @@
+{
+    "name": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+    },
+    "email": {
+        "label": "Email Address :",
+        "placeholder": "Enter your email"
+    },
+    "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number"
+    },
+    "password":{
+        "label": "Password",
+        "placeholder":"Enter your Password"
+
+    },
+    "gallery":{
+        "label": "Gallery",
+        "placeholder":"Enter your Galary Name"
+
+    }
+       
+}

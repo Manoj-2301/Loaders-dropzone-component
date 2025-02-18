@@ -1,0 +1,172 @@
+
+.application{
+    margin-top: 20px;
+}
+.form {
+    width: 500px;
+    padding: 40px 10px;
+    background-color: #CFE8EF;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form_field {
+        margin-bottom: 10px;
+
+        .label {
+            font-size: 14px;
+        }
+
+        .wrapper {
+            margin-top: 7px;
+
+            .input {
+                padding: 15px 10px;
+                width: 400px;
+                border: none;
+                border: 1px solid #AED1E6;
+                border-radius: 10px;
+            }
+        }
+
+        .error_message {
+            color: red;
+        }
+    }
+
+    .container {
+        max-width: 400px;
+        margin-bottom: 10px;
+        margin-top: 6px;
+        .label {
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .error_message {
+            color: red;
+        }
+        .rejected_error{
+            color: red;
+            list-style: none;
+            margin-top: 10px;
+           text-transform: uppercase;
+        }
+        .uploaderbox {
+            width: 400px;
+            height: 150px;
+            border: 2px dashed #AED1E6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin-top: 10px;
+
+            .drop_title {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+
+                .iconType {
+                    font-size: 24px;
+                }
+                .drop_sub_em{
+                    font-size: 12px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        .accepted_list {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            align-items: center;
+            // background-color: #FF3D00;
+            .accept_file {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+                width: 450px;
+                background-color: #AED1E6;
+                border-radius: 10px;
+
+                .image {
+                    border-radius: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    
+                }
+
+                .upload {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    // border: 2px solid red;
+                    gap: 10px;
+                }
+
+                .loader {
+                    display: block;
+                    position: relative;
+                    height: 12px;
+                    width: 80%;
+                    border: 1px solid #fff;
+                    border-radius: 10px;
+                    overflow: hidden;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        height: 100%;
+                        width: 0;
+                        background: #FF3D00;
+                        animation: 1s prog ease-in infinite;
+                    }
+
+                    @keyframes prog {
+                        to {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .remove {
+                    border: 2px solid #000000;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+
+                .iconBorder {
+                    border: 2px solid #000000;
+                    padding: 10px;
+                }
+
+            }
+        }
+    }
+
+    .button {
+        margin-top: 10px;
+        padding: 15px 50px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #85C7DE;
+        font-size: 16px;
+        letter-spacing: .06em;
+    }
+
+}

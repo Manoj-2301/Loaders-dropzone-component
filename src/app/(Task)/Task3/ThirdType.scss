@@ -1,0 +1,107 @@
+.imageside{
+    margin-top: 20px;
+}
+.forme{
+    width: 500px;
+    padding: 40px 10px;
+    background-color: #cfebef;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .form_field {
+        margin-bottom: 10px;
+
+        .label {
+            font-size: 14px;
+        }
+
+        .wrapper {
+            margin-top: 7px;
+
+            .input {
+                padding: 15px 10px;
+                width: 400px;
+                border: none;
+                border: 1px solid #AED1E6;
+                border-radius: 10px;
+            }
+        }
+
+        .error_message {
+            color: red;
+        }
+    }
+    .main_box{
+        display: flex;       
+        flex-wrap: wrap;
+        // gap: 10px;
+        .uploaderbox{
+            width: 200px;
+            height:200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #ccc;
+            .loaders{
+                display: block;
+                position: relative;
+                height: 20px;
+                width: 140px;
+                background-image: 
+                linear-gradient(#FFF 20px, transparent 0), 
+                linear-gradient(#FFF 20px, transparent 0), 
+                linear-gradient(#FFF 20px, transparent 0), 
+                linear-gradient(#FFF 20px, transparent 0);
+                background-repeat: no-repeat;
+                background-size: 20px auto;
+                background-position: 0 0, 40px 0, 80px 0, 120px 0;
+                animation: pgfill 1s linear infinite;
+                @keyframes pgfill {
+                    0% {   background-image: linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+                    25% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+                    50% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+                    75% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FFF 20px, transparent 0); }
+                    100% {   background-image: linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0), linear-gradient(#FF3D00 20px, transparent 0); }
+                  }
+              }
+              
+              
+              
+        }
+        .acccepted_list{
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            li{
+                
+                list-style: none;
+            }
+            .wrong{
+                color: white;
+                background-color: #FF3D00;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                border-bottom-left-radius: 20px;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+    .button {
+        margin-top: 10px;
+        padding: 15px 50px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        background-color: #85C7DE;
+        font-size: 16px;
+        letter-spacing: .06em;
+    }
+}
